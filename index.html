@@ -2,1026 +2,886 @@
 <html lang="ja">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>発表練習サークル（仮称） | 企画・運営案</title>
-	<meta name="description" content="就労移行支援施設における発表練習サークル（仮称）の対外説明用ページです。目的、活動内容、運営体制、募集方法、実施スケジュール、引継ぎ方針をまとめています。" />
-	<style>
-		:root {
-			--bg: #f6f7f9;
-			--panel: #ffffff;
-			--panel-soft: #fafbfc;
-			--text: #1e293b;
-			--muted: #5b6472;
-			--line: #e5e7eb;
-			--line-strong: #cfd6df;
-			--accent: #2563eb;
-			--accent-soft: #eff6ff;
-			--success-soft: #f0fdf4;
-			--shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
-			--radius: 14px;
-			--content-width: 860px;
-			--sidebar-width: 280px;
-		}
-
-		* {
-			box-sizing: border-box;
-		}
-
-		html {
-			scroll-behavior: smooth;
-		}
-
-		body {
-			margin: 0;
-			background: var(--bg);
-			color: var(--text);
-			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
-			line-height: 1.8;
-			-webkit-font-smoothing: antialiased;
-			text-rendering: optimizeLegibility;
-		}
-
-		a {
-			color: var(--accent);
-			text-decoration: none;
-		}
-
-		a:hover {
-			text-decoration: underline;
-		}
-
-		.site-header {
-			position: sticky;
-			top: 0;
-			z-index: 20;
-			backdrop-filter: saturate(180%) blur(12px);
-			background: rgba(246, 247, 249, 0.9);
-			border-bottom: 1px solid rgba(229, 231, 235, 0.85);
-		}
-
-		.header-inner {
-			max-width: 1280px;
-			margin: 0 auto;
-			padding: 0 24px;
-			min-height: 64px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 16px;
-		}
-
-		.brand {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			min-width: 0;
-		}
-
-		.brand-badge {
-			width: 12px;
-			height: 12px;
-			border-radius: 999px;
-			background: var(--accent);
-			box-shadow: 0 0 0 6px var(--accent-soft);
-			flex: 0 0 auto;
-		}
-
-		.brand-text {
-			min-width: 0;
-		}
-
-		.brand-title {
-			font-size: 0.96rem;
-			font-weight: 700;
-			letter-spacing: 0.02em;
-			margin: 0;
-			color: var(--text);
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-
-		.brand-subtitle {
-			margin: 0;
-			font-size: 0.8rem;
-			color: var(--muted);
-		}
-
-		.top-link {
-			font-size: 0.9rem;
-			color: var(--muted);
-			white-space: nowrap;
-		}
-
-		.mobile-nav-toggle {
-			display: none;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			min-width: 44px;
-			min-height: 44px;
-			padding: 10px 14px;
-			border: 1px solid var(--line);
-			border-radius: 12px;
-			background: rgba(255, 255, 255, 0.8);
-			color: var(--text);
-			cursor: pointer;
-			box-shadow: var(--shadow);
-			font: inherit;
-		}
-
-		.mobile-nav-toggle:hover {
-			background: #fff;
-		}
-
-		.mobile-nav-toggle-label {
-			font-size: 0.92rem;
-			font-weight: 600;
-			color: var(--muted);
-		}
-
-		.hamburger {
-			position: relative;
-			width: 18px;
-			height: 14px;
-			flex: 0 0 auto;
-		}
-
-		.hamburger span {
-			position: absolute;
-			left: 0;
-			width: 100%;
-			height: 2px;
-			border-radius: 999px;
-			background: currentColor;
-			transition: transform 0.22s ease, opacity 0.18s ease, top 0.22s ease;
-		}
-
-		.hamburger span:nth-child(1) {
-			top: 0;
-		}
-
-		.hamburger span:nth-child(2) {
-			top: 6px;
-		}
-
-		.hamburger span:nth-child(3) {
-			top: 12px;
-		}
-
-		.layout {
-			max-width: 1280px;
-			margin: 0 auto;
-			padding: 28px 24px 80px;
-			display: grid;
-			grid-template-columns: minmax(0, var(--sidebar-width)) minmax(0, var(--content-width));
-			justify-content: center;
-			gap: 28px;
-			align-items: start;
-		}
-
-		.sidebar {
-			position: sticky;
-			top: 88px;
-			align-self: start;
-		}
-
-		.mobile-nav-backdrop {
-			display: none;
-			position: fixed;
-			inset: 0;
-			background: rgba(15, 23, 42, 0.36);
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity 0.2s ease;
-			z-index: 35;
-		}
-
-		.panel {
-			background: var(--panel);
-			border: 1px solid var(--line);
-			border-radius: var(--radius);
-			box-shadow: var(--shadow);
-		}
-
-		.nav-panel {
-			padding: 18px 18px 14px;
-		}
-
-		.nav-title {
-			margin: 0 0 10px;
-			font-size: 0.85rem;
-			color: var(--muted);
-			text-transform: uppercase;
-			letter-spacing: 0.08em;
-		}
-
-		.toc {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		.toc li+li {
-			margin-top: 4px;
-		}
-
-		.toc a {
-			display: block;
-			padding: 8px 10px;
-			border-radius: 10px;
-			color: var(--muted);
-			font-size: 0.95rem;
-		}
-
-		.toc a:hover,
-		.toc a.active {
-			color: var(--text);
-			background: var(--panel-soft);
-			text-decoration: none;
-		}
-
-		.content {
-			min-width: 0;
-		}
-
-		.hero {
-			padding: 28px;
-			margin-bottom: 22px;
-		}
-
-		.eyebrow {
-			margin: 0 0 10px;
-			color: var(--accent);
-			font-size: 0.84rem;
-			font-weight: 700;
-			letter-spacing: 0.08em;
-			text-transform: uppercase;
-		}
-
-		h1 {
-			margin: 0;
-			font-size: clamp(2rem, 4vw, 2.7rem);
-			line-height: 1.25;
-			letter-spacing: -0.02em;
-		}
-
-		.lead {
-			margin: 16px 0 0;
-			color: var(--muted);
-			font-size: 1.03rem;
-			max-width: 70ch;
-		}
-
-		.hero-meta {
-			margin-top: 20px;
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-		}
-
-		.meta-chip {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			padding: 8px 12px;
-			background: var(--panel-soft);
-			border: 1px solid var(--line);
-			border-radius: 999px;
-			color: var(--muted);
-			font-size: 0.92rem;
-		}
-
-		section {
-			padding: 28px;
-			margin-bottom: 18px;
-			scroll-margin-top: 88px;
-		}
-
-		h2 {
-			margin: 0 0 14px;
-			font-size: 1.45rem;
-			line-height: 1.35;
-			letter-spacing: -0.01em;
-		}
-
-		h3 {
-			margin: 22px 0 8px;
-			font-size: 1.08rem;
-			line-height: 1.5;
-		}
-
-		p {
-			margin: 0 0 12px;
-		}
-
-		ul,
-		ol {
-			margin: 10px 0 14px 1.2rem;
-			padding: 0;
-		}
-
-		li+li {
-			margin-top: 6px;
-		}
-
-		.summary-grid,
-		.card-grid {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 14px;
-			margin-top: 16px;
-		}
-
-		.mini-card {
-			background: var(--panel-soft);
-			border: 1px solid var(--line);
-			border-radius: 12px;
-			padding: 16px;
-		}
-
-		.mini-card h3 {
-			margin-top: 0;
-			margin-bottom: 6px;
-		}
-
-		.mini-card p,
-		.mini-card ul {
-			margin-bottom: 0;
-			color: var(--muted);
-		}
-
-		.notice {
-			padding: 16px 18px;
-			border-radius: 12px;
-			background: var(--accent-soft);
-			border: 1px solid #dbeafe;
-			margin-top: 16px;
-		}
-
-		.notice p:last-child {
-			margin-bottom: 0;
-		}
-
-		.success {
-			background: var(--success-soft);
-			border-color: #dcfce7;
-		}
-
-		.table-wrap {
-			overflow-x: auto;
-			margin-top: 12px;
-			border: 1px solid var(--line);
-			border-radius: 12px;
-		}
-
-		table {
-			width: 100%;
-			border-collapse: collapse;
-			background: var(--panel);
-			min-width: 640px;
-		}
-
-		th,
-		td {
-			padding: 14px 14px;
-			text-align: left;
-			vertical-align: top;
-			border-bottom: 1px solid var(--line);
-			font-size: 0.96rem;
-		}
-
-		th {
-			background: var(--panel-soft);
-			color: var(--text);
-			font-weight: 700;
-		}
-
-		tr:last-child td {
-			border-bottom: 0;
-		}
-
-		.muted {
-			color: var(--muted);
-		}
-
-		.footer {
-			padding: 24px 0 0;
-			color: var(--muted);
-			font-size: 0.92rem;
-			text-align: center;
-		}
-
-		.section-kicker {
-			margin: 0 0 8px;
-			color: var(--muted);
-			font-size: 0.82rem;
-			text-transform: uppercase;
-			letter-spacing: 0.08em;
-		}
-
-		.inline-list {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-			margin: 14px 0 0;
-			padding: 0;
-			list-style: none;
-		}
-
-		.inline-list li {
-			margin: 0;
-			padding: 6px 10px;
-			background: var(--panel-soft);
-			border: 1px solid var(--line);
-			border-radius: 999px;
-			font-size: 0.92rem;
-			color: var(--muted);
-		}
-
-		@media (max-width: 1024px) {
-			body.nav-open {
-				overflow: hidden;
-			}
-
-			.mobile-nav-toggle {
-				display: inline-flex;
-			}
-
-			.top-link {
-				display: none;
-			}
-
-			.layout {
-				grid-template-columns: 1fr;
-			}
-
-			.sidebar {
-				position: fixed;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				width: min(86vw, 360px);
-				padding: 84px 16px 20px;
-				z-index: 40;
-				transform: translateX(-110%);
-				transition: transform 0.24s ease;
-				overflow-y: auto;
-			}
-
-			.sidebar .nav-panel {
-				min-height: calc(100vh - 104px);
-			}
-
-			.content {
-				order: 1;
-			}
-
-			body.nav-open .sidebar {
-				transform: translateX(0);
-			}
-
-			body.nav-open .mobile-nav-backdrop {
-				display: block;
-				opacity: 1;
-				pointer-events: auto;
-			}
-
-			body.nav-open .mobile-nav-toggle .hamburger span:nth-child(1) {
-				top: 6px;
-				transform: rotate(45deg);
-			}
-
-			body.nav-open .mobile-nav-toggle .hamburger span:nth-child(2) {
-				opacity: 0;
-			}
-
-			body.nav-open .mobile-nav-toggle .hamburger span:nth-child(3) {
-				top: 6px;
-				transform: rotate(-45deg);
-			}
-		}
-
-		@media (max-width: 680px) {
-
-			.header-inner,
-			.layout {
-				padding-left: 16px;
-				padding-right: 16px;
-			}
-
-			.hero,
-			section {
-				padding: 20px;
-			}
-
-			.summary-grid,
-			.card-grid {
-				grid-template-columns: 1fr;
-			}
-
-			.brand-subtitle,
-			.mobile-nav-toggle-label {
-				display: none;
-			}
-
-			th,
-			td {
-				padding: 12px;
-			}
-		}
-
-		@media print {
-			body {
-				background: #fff;
-			}
-
-			.site-header,
-			.sidebar,
-			.top-link,
-			.mobile-nav-backdrop,
-			.mobile-nav-toggle {
-				display: none !important;
-			}
-
-			.layout {
-				display: block;
-				max-width: none;
-				padding: 0;
-			}
-
-			.panel {
-				box-shadow: none;
-				border: 1px solid #d1d5db;
-			}
-
-			.hero,
-			section {
-				page-break-inside: avoid;
-			}
-		}
-	</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>発表練習サークル（仮称） | 企画・運営案</title>
+  <meta name="description" content="就労移行支援施設における発表練習サークル（仮称）の対外説明用ページです。目的、活動内容、運営体制、募集方法、実施スケジュール、引継ぎ方針をまとめています。" />
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --panel-soft: #fafbfc;
+      --text: #1e293b;
+      --muted: #5b6472;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --success-soft: #f0fdf4;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      --radius: 14px;
+      --content-width: 860px;
+      --sidebar-width: 280px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(180%) blur(12px);
+      background: rgba(246, 247, 249, .9);
+      border-bottom: 1px solid rgba(229, 231, 235, .85);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px var(--accent-soft);
+      flex: 0 0 auto;
+    }
+
+    .brand-title {
+      font-size: .96rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .brand-subtitle {
+      margin: 0;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .top-link {
+      font-size: .9rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .8);
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      font: inherit;
+    }
+
+    .mobile-nav-toggle-label {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .hamburger {
+      position: relative;
+      width: 18px;
+      height: 14px;
+      flex: 0 0 auto;
+    }
+
+    .hamburger span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .hamburger span:nth-child(1) {
+      top: 0;
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 6px;
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 12px;
+    }
+
+    .layout {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 24px 80px;
+      display: grid;
+      grid-template-columns: minmax(0, var(--sidebar-width)) minmax(0, var(--content-width));
+      justify-content: center;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
+    .mobile-nav-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .36);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+      z-index: 35;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-panel {
+      padding: 18px 18px 14px;
+    }
+
+    .nav-title {
+      margin: 0 0 10px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li+li {
+      margin-top: 4px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .toc a:hover,
+    .toc a.active {
+      color: var(--text);
+      background: var(--panel-soft);
+      text-decoration: none;
+    }
+
+    .toc a.external-link {
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .hero,
+    section {
+      padding: 28px;
+    }
+
+    .hero {
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      line-height: 1.25;
+      letter-spacing: -.02em;
+    }
+
+    .lead {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+      max-width: 70ch;
+    }
+
+    .hero-meta {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      color: var(--text);
+    }
+
+    .button-link.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    section {
+      margin-bottom: 18px;
+      scroll-margin-top: 88px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.45rem;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 14px 1.2rem;
+      padding: 0;
+    }
+
+    li+li {
+      margin-top: 6px;
+    }
+
+    .summary-grid,
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .mini-card {
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    .mini-card p,
+    .mini-card ul {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .notice {
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      border: 1px solid #dbeafe;
+      margin-top: 16px;
+    }
+
+    .success {
+      background: var(--success-soft);
+      border-color: #dcfce7;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      min-width: 640px;
+    }
+
+    th,
+    td {
+      padding: 14px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: .96rem;
+    }
+
+    th {
+      background: var(--panel-soft);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .footer {
+      padding: 24px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+      text-align: center;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .inline-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .inline-list li {
+      margin: 0;
+      padding: 6px 10px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1024px) {
+      body.nav-open {
+        overflow: hidden;
+      }
+
+      .mobile-nav-toggle {
+        display: inline-flex;
+      }
+
+      .top-links .top-link {
+        display: none;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(86vw, 360px);
+        padding: 84px 16px 20px;
+        z-index: 40;
+        transform: translateX(-110%);
+        transition: transform .24s ease;
+        overflow-y: auto;
+      }
+
+      .sidebar .nav-panel {
+        min-height: calc(100vh - 104px);
+      }
+
+      body.nav-open .sidebar {
+        transform: translateX(0);
+      }
+
+      body.nav-open .mobile-nav-backdrop {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+
+      .header-inner,
+      .layout {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero,
+      section {
+        padding: 22px;
+      }
+
+      .summary-grid,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button-link {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-	<header class="site-header" id="top">
-		<div class="header-inner">
-			<div class="brand">
-				<span class="brand-badge" aria-hidden="true"></span>
-				<div class="brand-text">
-					<p class="brand-title">発表練習サークル（仮称）</p>
-					<p class="brand-subtitle">対外説明用ページ </p>
-				</div>
-			</div>
-			<button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="site-sidebar"
-				aria-label="目次を開閉">
-				<span class="hamburger" aria-hidden="true">
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-				<span class="mobile-nav-toggle-label">目次</span>
-			</button>
-		</div>
-	</header>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <div>
+          <p class="brand-title">発表練習サークル（仮称）</p>
+          <p class="brand-subtitle">対外説明ページ</p>
+        </div>
+      </div>
+      <div class="top-links">
+        <a class="top-link" href="guideline.html">発表ガイドラインへ</a>
+        <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="site-sidebar">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="mobile-nav-toggle-label">目次</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-nav-backdrop" hidden></div>
+  <main class="layout">
+    <aside class="sidebar" id="site-sidebar">
+      <nav class="panel nav-panel" aria-label="目次">
+        <p class="nav-title">Contents</p>
+        <ol class="toc">
+          <li><a href="#overview">概要</a></li>
+          <li><a href="#background">背景</a></li>
+          <li><a href="#purpose">目的</a></li>
+          <li><a href="#program">活動内容</a></li>
+          <li><a href="#formats">発表形式</a></li>
+          <li><a href="#participation">対象・参加方法</a></li>
+          <li><a href="#operations">運営体制</a></li>
+          <li><a href="#recruitment">募集・周知</a></li>
+          <li><a href="#schedule">実施スケジュール</a></li>
+          <li><a href="#handover">継続運営・引継ぎ</a></li>
+          <li><a href="#care">配慮事項</a></li>
+          <li><a href="#effects">期待される効果</a></li>
+          <li><a class="external-link" href="guideline.html">発表ガイドライン（別ページ）</a></li>
+        </ol>
+      </nav>
+    </aside>
+    <div class="content">
+      <section class="panel hero" aria-labelledby="hero-title">
+        <p class="eyebrow">Public Overview</p>
+        <h1 id="hero-title">人前で話す経験を、<br>安心して重ねられる場をつくる。</h1>
+        <p class="lead">発表練習サークル（仮称）は、就労移行支援施設において、利用者が段階的に人前で話す経験を積み、面接・報告・相談・説明などに必要となる基礎的な発信力を育てることを目的とした活動です。</p>
+        <div class="hero-actions">
+          <a class="button-link primary" href="guideline.html">発表ガイドラインを見る</a>
+          <a class="button-link" href="#schedule">実施スケジュールへ</a>
+        </div>
+      </section>
 
-	<div class="mobile-nav-backdrop" hidden></div>
+      <section class="panel" id="overview">
+        <p class="section-kicker">Overview</p>
+        <h2>概要</h2>
+        <p>本ページは、発表練習サークル（仮称）の設立提案書および運営計画書をもとに、外部向けに内容を整理した説明ページです。</p>
+        <p>本活動は、発表の巧拙を競うことではなく、参加者が安心して話す経験を積み、苦手意識や緊張を少しずつ和らげていくことを重視しています。</p>
+        <div class="summary-grid">
+          <article class="mini-card">
+            <h3>ねらい</h3>
+            <p>発表経験の蓄積を通して、就職活動や就労後に役立つ説明力・構成力・発信力の基礎を育てます。</p>
+          </article>
+          <article class="mini-card">
+            <h3>発表準備も支援</h3>
+            <p>別ページの発表ガイドラインでは、15分・30分・50分ごとの発表準備の考え方と構成例をまとめています。</p>
+          </article>
+        </div>
+      </section>
 
-	<main class="layout">
-		<aside class="sidebar" id="site-sidebar">
-			<nav class="panel nav-panel" aria-label="目次">
-				<p class="nav-title">Contents</p>
-				<ol class="toc">
-					<li><a href="#overview">概要</a></li>
-					<li><a href="#background">背景</a></li>
-					<li><a href="#purpose">目的</a></li>
-					<li><a href="#program">活動内容</a></li>
-					<li><a href="#formats">発表形式</a></li>
-					<li><a href="#participation">対象・参加方法</a></li>
-					<li><a href="#operations">運営体制</a></li>
-					<li><a href="#recruitment">募集・周知</a></li>
-					<li><a href="#schedule">実施スケジュール</a></li>
-					<li><a href="#handover">継続運営・引継ぎ</a></li>
-					<li><a href="#care">配慮事項</a></li>
-					<li><a href="#effects">期待される効果</a></li>
-				</ol>
-			</nav>
-		</aside>
-
-		<div class="content">
-			<section class="panel hero" aria-labelledby="hero-title">
-				<p class="eyebrow">Public Overview</p>
-				<h1 id="hero-title">人前で話す経験を、<br>安心して重ねられる場をつくる。</h1>
-				<p >
-					発表練習サークル（仮称）は、就労移行支援施設において、利用者が段階的に人前で話す経験を積み、
-					<br>面接・報告・相談・説明などに必要となる基礎的な発信力を育てることを目的とした活動です。
-				</p>
-				<!--
-				<div class="hero-meta" aria-label="概要情報">
-					<span class="meta-chip">対象：就労移行支援施設の利用者</span>
-					<span class="meta-chip">形式：静的1ページサイト</span>
-				</div>
-				-->
-			</section>
-
-			<section class="panel" id="overview">
-				<p class="section-kicker">Overview</p>
-				<h2>概要</h2>
-				<p>
-					本ページは、発表練習サークル（仮称）の目的や運営について、内容を整理した説明ページです。
-				</p>
-				<p>
-					本サークル活動は、発表のうまさを競うことではなく、参加者が安心して話す経験を積み、
-					苦手意識や緊張を少しずつ和らげていくことを重視しています。
-				</p>
-				<div class="summary-grid">
-					<article class="mini-card">
-						<h3>ねらい</h3>
-						<p>発表経験の蓄積を通して、就職活動や就労後に役立つ説明力・構成力・発信力の基礎を育てます。</p>
-					</article>
-					<article class="mini-card">
-						<h3>特長</h3>
-						<p>見学のみ、短時間参加、資料なし参加にも対応し、参加ハードルを下げた段階的な運営を行います。</p>
-					</article>
-				</div>
-			</section>
-
-			<section class="panel" id="background">
-				<p class="section-kicker">Background</p>
-				<h2>背景</h2>
-				<p>
-					就労移行支援の利用者の中には、人前で話す機会が少ないことにより、
-					自己紹介、面接、報告、相談、説明等の場面で強い緊張を覚える方が少なくないと考えられます。
-				</p>
-				<p>
-					一方で、日々の訓練の中において、一定時間を使って人前で話す経験を継続的に積める機会は、
-					必ずしも十分とはいえません。こうした状況を踏まえ、安心して挑戦できる練習機会を施設内に設ける意義は大きいと考えています。
-				</p>
-				<div class="notice">
-					<p><strong>想定している課題</strong></p>
-					<ul>
-						<li>人前で話す経験が少なく、本番で緊張しやすい</li>
-						<li>話を順序立てて整理する機会が少ない</li>
-						<li>面接や報告の練習を継続的に行える場が限られている</li>
-					</ul>
-				</div>
-			</section>
-
-			<section class="panel" id="purpose">
-				<p class="section-kicker">Purpose</p>
-				<h2>目的</h2>
-				<p>
-					本サークルは、参加者が安心して人前で話す経験を積み、自身の緊張や苦手意識を少しずつ和らげていくことを主目的とします。
-					あわせて、次のような力の育成を目指します。
-				</p>
-				<ul>
-					<li>人前で最後まで話し切る経験を積むこと</li>
-					<li>話す内容を整理し、順序立てて伝えること</li>
-					<li>緊張した状況においても、自分の言葉で説明すること</li>
-					<li>面接や就労後の報告・説明につながる基礎的な発信力を養うこと</li>
-				</ul>
-			</section>
-
-			<section class="panel" id="program">
-				<p class="section-kicker">Program</p>
-				<h2>活動内容</h2>
-				<p>
-					発表テーマは、参加のしやすさを重視し、当面は本・漫画・ドラマ・映画等のエンターテインメント作品の紹介を基本としています。
-					自分が興味を持っている題材や、人に勧めたい作品について話す形式とすることで、
-					比較的取り組みやすい形から発表経験を積むことができます。
-				</p>
-				<p>
-					運営が安定した段階では、趣味、最近学んだこと、気になったニュース、おすすめのサービス等へテーマを広げることも想定しています。
-				</p>
-				<ul class="inline-list" aria-label="初期テーマ一覧">
-					<li>本</li>
-					<li>漫画</li>
-					<li>ドラマ</li>
-					<li>映画</li>
-					<li>将来的な拡張：趣味・ニュース・学び</li>
-				</ul>
-			</section>
-
-			<section class="panel" id="formats">
-				<p class="section-kicker">Formats</p>
-				<h2>発表形式</h2>
-				<div class="card-grid">
-					<article class="mini-card">
-						<h3>会話形式</h3>
-						<p>資料作成の負担を抑え、まずは口頭で紹介する形式です。短時間で取り組みやすく、初回参加にも適しています。</p>
-					</article>
-					<article class="mini-card">
-						<h3>ホワイトボード形式</h3>
-						<p>要点を書きながら話すことで、内容の整理と伝達のしやすさを両立しやすい形式です。</p>
-					</article>
-					<article class="mini-card">
-						<h3>スライド・資料形式</h3>
-						<p>内容の構成、時間配分、資料活用まで含めて練習できる、実務に近い発表形式です。</p>
-					</article>
-					<article class="mini-card">
-						<h3>選べる発表時間</h3>
-						<p>15分、30分、50分を基本とし、経験や準備負担に応じて選択できる想定です。</p>
-					</article>
-				</div>
-			</section>
-
-			<section class="panel" id="participation">
-				<p class="section-kicker">Participation</p>
-				<h2>対象・参加方法</h2>
-				<p>
-					対象は、発表経験を増やしたい利用者、人前で話す練習を行いたい利用者、
-					将来的に面接や報告の場面に備えたい利用者等です。
-				</p>
-				<p>
-					発表者としての参加に限らず、見学、聞き手としての参加、感想共有のみの参加も可能とし、
-					それぞれが無理のない範囲で関われるように設計しています。
-				</p>
-				<div class="notice success">
-					<p><strong>参加のハードルを下げる工夫</strong></p>
-					<ul>
-						<li>見学のみの参加を可とする</li>
-						<li>短時間の発表から挑戦できるようにする</li>
-						<li>資料なしでの参加も認める</li>
-						<li>聞き手や感想共有のみの参加も歓迎する</li>
-					</ul>
-				</div>
-			</section>
-
-			<section class="panel" id="operations">
-				<p class="section-kicker">Operations</p>
-				<h2>運営体制</h2>
-				<p>
-					継続的な運営のため、特定の個人に役割が集中しない体制を基本とします。
-					司会、タイムキーパー、発表順の調整、周知補助等を必要に応じて分担し、
-					複数名で支えられる運営を想定しています。
-				</p>
-				<div class="table-wrap">
-					<table>
-						<thead>
-							<tr>
-								<th>役割</th>
-								<th>主な内容</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>司会</td>
-								<td>開始案内、進行、発表者紹介、締めの案内</td>
-							</tr>
-							<tr>
-								<td>タイムキーパー</td>
-								<td>発表時間・感想共有時間の管理</td>
-							</tr>
-							<tr>
-								<td>補助役</td>
-								<td>発表順の調整、機材準備、周知補助</td>
-							</tr>
-							<tr>
-								<td>施設職員</td>
-								<td>必要に応じた助言、継続運営に関する支援</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</section>
-
-			<section class="panel" id="recruitment">
-				<p class="section-kicker">Recruitment</p>
-				<h2>募集・周知</h2>
-				<p>
-					募集に当たっては、発表が得意な人のための活動ではなく、
-					「人前で話す練習をしたい人」のための活動であることを明確に伝えることが重要です。
-				</p>
-				<p>
-					見学のみの参加が可能であること、短時間・資料なしでも参加できること、
-					聞き手としての参加も歓迎することを示し、心理的な負担を下げた募集を行います。
-				</p>
-				<ul>
-					<li>施設内掲示</li>
-					<li>案内文の配布</li>
-					<li>朝礼での簡単な紹介</li>
-					<li>見本発表を含む体験会の実施</li>
-				</ul>
-			</section>
-
-			<section class="panel" id="schedule">
-				<p class="section-kicker">Schedule</p>
-				<h2>実施スケジュール</h2>
-				<h3>事前準備の流れ</h3>
-				<div class="table-wrap">
-					<table>
-						<thead>
-							<tr>
-								<th>段階</th>
-								<th>実施内容</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>準備開始</td>
-								<td>施設内での実施可否確認、概要整理、役割分担の確認</td>
-							</tr>
-							<tr>
-								<td>周知期間</td>
-								<td>掲示、案内文配布、朝礼での紹介</td>
-							</tr>
-							<tr>
-								<td>体験会</td>
-								<td>見本発表を含む体験型の案内回を実施し、雰囲気を共有</td>
-							</tr>
-							<tr>
-								<td>本実施</td>
-								<td>参加状況を見ながら、定期開催へ移行</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<h3>60分で実施する場合の当日タイムスケジュール（例）</h3>
-				<div class="table-wrap">
-					<table>
-						<thead>
-							<tr>
-								<th>時間</th>
-								<th>内容</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>0〜5分</td>
-								<td>開始あいさつ、目的共有、進行説明</td>
-							</tr>
-							<tr>
-								<td>5〜20分</td>
-								<td>発表1</td>
-							</tr>
-							<tr>
-								<td>20〜30分</td>
-								<td>感想共有・簡単な質疑</td>
-							</tr>
-							<tr>
-								<td>30〜45分</td>
-								<td>発表2</td>
-							</tr>
-							<tr>
-								<td>45〜55分</td>
-								<td>感想共有・簡単な質疑</td>
-							</tr>
-							<tr>
-								<td>55〜60分</td>
-								<td>振返り、次回案内、終了</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<h3>発表時間ごとの目安</h3>
-				<div class="table-wrap">
-					<table>
-						<thead>
-							<tr>
-								<th>発表枠</th>
-								<th>運営目安</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>15分</td>
-								<td>複数名で実施しやすく、初回参加にも適する</td>
-							</tr>
-							<tr>
-								<td>30分</td>
-								<td>ある程度準備した内容を発表する中程度の回に適する</td>
-							</tr>
-							<tr>
-								<td>50分</td>
-								<td>発表者1名を基本とし、質疑・感想共有を含めて90分程度の枠を確保することが望ましい</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</section>
-
-			<section class="panel" id="handover">
-				<p class="section-kicker">Continuity</p>
-				<h2>継続運営・引継ぎ</h2>
-				<p>
-					就労移行支援の性質上、起案者や中心メンバーが卒業・退所する可能性があるため、
-					当初から引継ぎを見据えた運営を前提としています。
-				</p>
-				<ul>
-					<li>目的、進め方、感想共有ルール、募集方法等を簡潔な運営資料として文書化する</li>
-					<li>代表以外の参加者にも司会や補助役を経験してもらう</li>
-					<li>運営ノウハウを複数名に分散し、属人化を防ぐ</li>
-					<li>必要に応じて施設職員と情報を共有し、後任への引継ぎを円滑にする</li>
-				</ul>
-			</section>
-
-			<section class="panel" id="care">
-				<p class="section-kicker">Care & Risk</p>
-				<h2>配慮事項</h2>
-				<p>
-					人前で話すことに不安のある利用者が参加することを踏まえ、
-					否定的な評価を避け、良かった点を中心とした感想共有を基本とします。
-				</p>
-				<ul>
-					<li>発表準備の負担が過大とならないよう、短時間参加や資料なし参加を認める</li>
-					<li>参加者数が少ない場合は、少人数実施や会話形式の回に切り替える</li>
-					<li>一定期間参加希望者が少ない場合は、テーマ・時間設定・体験会の内容を見直す</li>
-				</ul>
-			</section>
-
-			<section class="panel" id="effects">
-				<p class="section-kicker">Effects</p>
-				<h2>期待される効果</h2>
-				<p>
-					本サークルの実施により、人前で話すことへの抵抗感の軽減、
-					緊張する場面における発話経験の蓄積、話の構成力・説明力の向上、
-					他者の発表から学ぶ機会の増加等が期待されます。
-				</p>
-				<p>
-					これらは、面接や就職後の報告・説明等にもつながる基礎的な力であり、
-					就労準備の一環として意義のある取り組みです。
-				</p>
-				<div class="notice">
-					<p><strong>主な確認観点</strong></p>
-					<ul>
-						<li>人前で話すことへの抵抗感が下がったか</li>
-						<li>準備をして話す経験が積めたか</li>
-						<li>面接や就労場面に役立ちそうか</li>
-						<li>次回も参加したいと思える内容になっているか</li>
-					</ul>
-				</div>
-			</section>
-
-		</div>
-	</main>
-
-	<script>
-		const links = [...document.querySelectorAll('.toc a')];
-		const sections = links
-			.map(link => document.querySelector(link.getAttribute('href')))
-			.filter(Boolean);
-
-		const toggleButton = document.querySelector('.mobile-nav-toggle');
-		const backdrop = document.querySelector('.mobile-nav-backdrop');
-		const body = document.body;
-		const mobileMedia = window.matchMedia('(max-width: 1024px)');
-
-		const openNav = () => {
-			if (!toggleButton || !backdrop) return;
-			body.classList.add('nav-open');
-			backdrop.hidden = false;
-			toggleButton.setAttribute('aria-expanded', 'true');
-		};
-
-		const closeNav = () => {
-			if (!toggleButton || !backdrop) return;
-			body.classList.remove('nav-open');
-			backdrop.hidden = true;
-			toggleButton.setAttribute('aria-expanded', 'false');
-		};
-
-		if (toggleButton && backdrop) {
-			toggleButton.addEventListener('click', () => {
-				body.classList.contains('nav-open') ? closeNav() : openNav();
-			});
-
-			backdrop.addEventListener('click', closeNav);
-
-			links.forEach(link => {
-				link.addEventListener('click', () => {
-					if (mobileMedia.matches) closeNav();
-				});
-			});
-
-			window.addEventListener('resize', () => {
-				if (!mobileMedia.matches) closeNav();
-			});
-
-			window.addEventListener('keydown', (event) => {
-				if (event.key === 'Escape') closeNav();
-			});
-		}
-
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				const id = '#' + entry.target.id;
-				const link = links.find(a => a.getAttribute('href') === id);
-				if (!link) return;
-				if (entry.isIntersecting) {
-					links.forEach(a => a.classList.remove('active'));
-					link.classList.add('active');
-				}
-			});
-		}, {
-			rootMargin: '-25% 0px -65% 0px',
-			threshold: 0.1
-		});
-
-		sections.forEach(section => observer.observe(section));
-	</script>
+      <section class="panel" id="background">
+        <p class="section-kicker">Background</p>
+        <h2>背景</h2>
+        <p>就労移行支援の利用者の中には、人前で話す機会が少ないことにより、自己紹介、面接、報告、相談、説明等の場面で強い緊張を覚える方が少なくないと考えられます。</p>
+        <p>一方で、日々の訓練の中において、一定時間を使って人前で話す経験を継続的に積める機会は、必ずしも十分とはいえません。こうした状況を踏まえ、安心して挑戦できる練習機会を施設内に設ける意義は大きいと考えています。</p>
+        <div class="notice">
+          <p><strong>想定している課題</strong></p>
+          <ul>
+            <li>人前で話す経験が少なく、本番で緊張しやすい</li>
+            <li>話を順序立てて整理する機会が少ない</li>
+            <li>面接や報告の練習を継続的に行える場が限られている</li>
+          </ul>
+        </div>
+      </section>
+      <section class="panel" id="purpose">
+        <p class="section-kicker">Purpose</p>
+        <h2>目的</h2>
+        <p>本サークルは、参加者が安心して人前で話す経験を積み、自身の緊張や苦手意識を少しずつ和らげていくことを主目的とします。あわせて、次のような力の育成を目指します。</p>
+        <ul>
+          <li>人前で最後まで話し切る経験を積むこと</li>
+          <li>話す内容を整理し、順序立てて伝えること</li>
+          <li>緊張した状況においても、自分の言葉で説明すること</li>
+          <li>面接や就労後の報告・説明につながる基礎的な発信力を養うこと</li>
+        </ul>
+      </section>
+      <section class="panel" id="program">
+        <p class="section-kicker">Program</p>
+        <h2>活動内容</h2>
+        <p>
+          発表テーマは、参加のしやすさを重視し、当面は本・漫画・ドラマ・映画等のエンターテインメント作品の紹介を基本としています。自分が興味を持っている題材や、人に勧めたい作品について話す形式とすることで、比較的取り組みやすい形から発表経験を積むことができます。
+        </p>
+        <p>運営が安定した段階では、趣味、最近学んだこと、気になったニュース、おすすめのサービス等へテーマを広げることも想定しています。</p>
+        <ul class="inline-list">
+          <li>本</li>
+          <li>漫画</li>
+          <li>ドラマ</li>
+          <li>映画</li>
+          <li>将来的な拡張：趣味・ニュース・学び</li>
+        </ul>
+      </section>
+      <section class="panel" id="formats">
+        <p class="section-kicker">Formats</p>
+        <h2>発表形式</h2>
+        <div class="card-grid">
+          <article class="mini-card">
+            <h3>会話形式</h3>
+            <p>資料作成の負担を抑え、まずは口頭で紹介する形式です。短時間で取り組みやすく、初回参加にも適しています。</p>
+          </article>
+          <article class="mini-card">
+            <h3>ホワイトボード形式</h3>
+            <p>要点を書きながら話すことで、内容の整理と伝達のしやすさを両立しやすい形式です。</p>
+          </article>
+          <article class="mini-card">
+            <h3>スライド・資料形式</h3>
+            <p>内容の構成、時間配分、資料活用まで含めて練習できる、実務に近い発表形式です。</p>
+          </article>
+          <article class="mini-card">
+            <h3>選べる発表時間</h3>
+            <p>15分、30分、50分を基本とし、経験や準備負担に応じて選択できる想定です。</p>
+          </article>
+        </div>
+        <div class="notice success">
+          <p><strong>準備支援</strong></p>
+          <p>発表時間ごとに、構成の考え方や避けたいポイントを整理した <a href="guideline.html">発表ガイドライン</a> を別ページで公開しています。</p>
+        </div>
+      </section>
+      <section class="panel" id="participation">
+        <p class="section-kicker">Participation</p>
+        <h2>対象・参加方法</h2>
+        <p>対象は、発表経験を増やしたい利用者、人前で話す練習を行いたい利用者、将来的に面接や報告の場面に備えたい利用者等です。</p>
+        <p>発表者としての参加に限らず、見学、聞き手としての参加、感想共有のみの参加も可能とし、それぞれが無理のない範囲で関われるように設計しています。</p>
+        <div class="notice success">
+          <p><strong>参加のハードルを下げる工夫</strong></p>
+          <ul>
+            <li>見学のみの参加を可とする</li>
+            <li>短時間の発表から挑戦できるようにする</li>
+            <li>資料なしでの参加も認める</li>
+            <li>聞き手や感想共有のみの参加も歓迎する</li>
+          </ul>
+        </div>
+      </section>
+      <section class="panel" id="operations">
+        <p class="section-kicker">Operations</p>
+        <h2>運営体制</h2>
+        <p>継続的な運営のため、特定の個人に役割が集中しない体制を基本とします。司会、タイムキーパー、発表順の調整、周知補助等を必要に応じて分担し、複数名で支えられる運営を想定しています。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>役割</th>
+                <th>主な内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>司会</td>
+                <td>開始案内、進行、発表者紹介、締めの案内</td>
+              </tr>
+              <tr>
+                <td>タイムキーパー</td>
+                <td>発表時間・感想共有時間の管理</td>
+              </tr>
+              <tr>
+                <td>補助役</td>
+                <td>発表順の調整、機材準備、周知補助</td>
+              </tr>
+              <tr>
+                <td>施設職員</td>
+                <td>必要に応じた助言、継続運営に関する支援</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="recruitment">
+        <p class="section-kicker">Recruitment</p>
+        <h2>募集・周知</h2>
+        <p>募集に当たっては、発表が得意な人のための活動ではなく、「人前で話す練習をしたい人」のための活動であることを明確に伝えることが重要です。</p>
+        <p>見学のみの参加が可能であること、短時間・資料なしでも参加できること、聞き手としての参加も歓迎することを示し、心理的な負担を下げた募集を行います。</p>
+        <ul>
+          <li>施設内掲示</li>
+          <li>案内文の配布</li>
+          <li>朝礼・終礼での簡単な紹介</li>
+          <li>見本発表を含む体験会の実施</li>
+        </ul>
+      </section>
+      <section class="panel" id="schedule">
+        <p class="section-kicker">Schedule</p>
+        <h2>実施スケジュール</h2>
+        <h3>事前準備の流れ</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>段階</th>
+                <th>実施内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>準備開始</td>
+                <td>施設内での実施可否確認、概要整理、役割分担の確認</td>
+              </tr>
+              <tr>
+                <td>周知期間</td>
+                <td>掲示、案内文配布、朝礼・終礼での紹介</td>
+              </tr>
+              <tr>
+                <td>体験会</td>
+                <td>見本発表を含む体験型の案内回を実施し、雰囲気を共有</td>
+              </tr>
+              <tr>
+                <td>本実施</td>
+                <td>参加状況を見ながら、定期開催へ移行</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>60分で実施する場合の当日タイムスケジュール（例）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>時間</th>
+                <th>内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0〜5分</td>
+                <td>開始あいさつ、目的共有、進行説明</td>
+              </tr>
+              <tr>
+                <td>5〜20分</td>
+                <td>発表1</td>
+              </tr>
+              <tr>
+                <td>20〜30分</td>
+                <td>感想共有・簡単な質疑</td>
+              </tr>
+              <tr>
+                <td>30〜45分</td>
+                <td>発表2</td>
+              </tr>
+              <tr>
+                <td>45〜55分</td>
+                <td>感想共有・簡単な質疑</td>
+              </tr>
+              <tr>
+                <td>55〜60分</td>
+                <td>振返り、次回案内、終了</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>発表時間ごとの目安</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>発表枠</th>
+                <th>運営目安</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>15分</td>
+                <td>複数名で実施しやすく、初回参加にも適する</td>
+              </tr>
+              <tr>
+                <td>30分</td>
+                <td>ある程度準備した内容を発表する中程度の回に適する</td>
+              </tr>
+              <tr>
+                <td>50分</td>
+                <td>発表者1名を基本とし、質疑・感想共有を紙ベースにして、90分程度の枠を確保することが望ましい</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="handover">
+        <p class="section-kicker">Continuity</p>
+        <h2>継続運営・引継ぎ</h2>
+        <p>就労移行支援の性質上、起案者や中心メンバーが卒業・退所する可能性があるため、当初から引継ぎを見据えた運営を前提としています。</p>
+        <ul>
+          <li>目的、進め方、感想共有ルール、募集方法等を簡潔な運営資料として文書化する</li>
+          <li>代表以外の参加者にも司会や補助役を経験してもらう</li>
+          <li>運営ノウハウを複数名に分散し、属人化を防ぐ</li>
+          <li>必要に応じて施設職員と情報を共有し、後任への引継ぎを円滑にする</li>
+        </ul>
+      </section>
+      <section class="panel" id="care">
+        <p class="section-kicker">Care & Risk</p>
+        <h2>配慮事項</h2>
+        <p>人前で話すことに不安のある利用者が参加することを踏まえ、否定的な評価を避け、良かった点を中心とした感想共有を基本とします。</p>
+        <ul>
+          <li>発表準備の負担が過大とならないよう、短時間参加や資料なし参加を認める</li>
+          <li>参加者数が少ない場合は、少人数実施や会話形式の回に切り替える</li>
+          <li>一定期間参加希望者が少ない場合は、テーマ・時間設定・体験会の内容を見直す</li>
+        </ul>
+      </section>
+      <section class="panel" id="effects">
+        <p class="section-kicker">Effects</p>
+        <h2>期待される効果</h2>
+        <p>本サークルの実施により、人前で話すことへの抵抗感の軽減、緊張する場面における発話経験の蓄積、話の構成力・説明力の向上、他者の発表から学ぶ機会の増加等が期待されます。</p>
+        <p>これらは、面接や就職後の報告・説明等にもつながる基礎的な力であり、就労準備の一環として意義のある取り組みです。</p>
+        <div class="notice">
+          <p><strong>主な確認観点</strong></p>
+          <ul>
+            <li>人前で話すことへの抵抗感が下がったか</li>
+            <li>準備をして話す経験が積めたか</li>
+            <li>面接や就労場面に役立ちそうか</li>
+            <li>次回も参加したいと思える内容になっているか</li>
+          </ul>
+        </div>
+      </section>
+      <footer class="footer">
+        <p>本ページは、発表練習サークル（仮称）の提案書・計画書・発表内容作成ガイドラインをもとに構成しています。</p>
+      </footer>
+    </div>
+  </main>
+  <script>
+    const links = [...document.querySelectorAll('.toc a[href^="#"]')];
+    const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const toggleButton = document.querySelector('.mobile-nav-toggle');
+    const backdrop = document.querySelector('.mobile-nav-backdrop');
+    const body = document.body; const mobileMedia = window.matchMedia('(max-width: 1024px)');
+    const openNav = () => { if (!toggleButton || !backdrop) return; body.classList.add('nav-open'); backdrop.hidden = false; toggleButton.setAttribute('aria-expanded', 'true'); };
+    const closeNav = () => { if (!toggleButton || !backdrop) return; body.classList.remove('nav-open'); backdrop.hidden = true; toggleButton.setAttribute('aria-expanded', 'false'); };
+    if (toggleButton && backdrop) {
+      toggleButton.addEventListener('click', () => body.classList.contains('nav-open') ? closeNav() : openNav());
+      backdrop.addEventListener('click', closeNav);
+      document.querySelectorAll('.toc a').forEach(link => link.addEventListener('click', () => { if (mobileMedia.matches) closeNav(); }));
+      window.addEventListener('resize', () => { if (!mobileMedia.matches) closeNav(); });
+      window.addEventListener('keydown', event => { if (event.key === 'Escape') closeNav(); });
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>発表内容作成ガイドライン | 発表練習サークル（仮称）</title>
+  <meta name="description" content="発表練習サークル向けの発表内容作成ガイドラインです。15分・30分・50分ごとの考え方、構成例、避けたいポイントをまとめています。" />
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #fff;
+      --panel-soft: #fafbfc;
+      --text: #1e293b;
+      --muted: #5b6472;
+      --line: #e5e7eb;
+      --accent: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --warn: #8b5a2b;
+      --warn-soft: #fff7ed;
+      --shadow: 0 8px 24px rgba(15, 23, 42, .05);
+      --radius: 14px;
+      --content-width: 900px;
+      --sidebar-width: 290px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(180%) blur(12px);
+      background: rgba(246, 247, 249, .9);
+      border-bottom: 1px solid rgba(229, 231, 235, .85);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--warn);
+      box-shadow: 0 0 0 6px rgba(139, 90, 43, .12);
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: .96rem;
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      margin: 0;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .top-link {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .8);
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      font: inherit;
+    }
+
+    .mobile-nav-toggle-label {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .hamburger {
+      position: relative;
+      width: 18px;
+      height: 14px;
+    }
+
+    .hamburger span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .hamburger span:nth-child(1) {
+      top: 0
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 6px
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 12px
+    }
+
+    .layout {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 24px 80px;
+      display: grid;
+      grid-template-columns: minmax(0, var(--sidebar-width)) minmax(0, var(--content-width));
+      justify-content: center;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
+    .mobile-nav-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .36);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+      z-index: 35;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-panel {
+      padding: 18px 18px 14px;
+    }
+
+    .nav-title {
+      margin: 0 0 10px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li+li {
+      margin-top: 4px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .toc a:hover,
+    .toc a.active {
+      color: var(--text);
+      background: var(--panel-soft);
+      text-decoration: none;
+    }
+
+    .toc a.external-link {
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .hero,
+    section {
+      padding: 28px;
+    }
+
+    .hero {
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--warn);
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      line-height: 1.25;
+      letter-spacing: -.02em;
+    }
+
+    .lead {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+      max-width: 72ch;
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      color: var(--text);
+    }
+
+    .button-link.primary {
+      background: var(--warn);
+      color: #fff;
+      border-color: var(--warn);
+    }
+
+    section {
+      margin-bottom: 18px;
+      scroll-margin-top: 88px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.45rem;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 14px 1.2rem;
+      padding: 0;
+    }
+
+    li+li {
+      margin-top: 6px;
+    }
+
+    .summary-grid,
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .mini-card {
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    .mini-card p,
+    .mini-card ul {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .notice {
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      border: 1px solid #dbeafe;
+      margin-top: 16px;
+    }
+
+    .warn {
+      background: var(--warn-soft);
+      border-color: #fed7aa;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      min-width: 640px;
+    }
+
+    th,
+    td {
+      padding: 14px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: .96rem;
+    }
+
+    th {
+      background: var(--panel-soft);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .footer {
+      padding: 24px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+      text-align: center;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    @media (max-width:1024px) {
+      body.nav-open {
+        overflow: hidden
+      }
+
+      .mobile-nav-toggle {
+        display: inline-flex
+      }
+
+      .top-links .top-link {
+        display: none
+      }
+
+      .layout {
+        grid-template-columns: 1fr
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(86vw, 360px);
+        padding: 84px 16px 20px;
+        z-index: 40;
+        transform: translateX(-110%);
+        transition: transform .24s ease;
+        overflow-y: auto
+      }
+
+      .sidebar .nav-panel {
+        min-height: calc(100vh - 104px)
+      }
+
+      body.nav-open .sidebar {
+        transform: translateX(0)
+      }
+
+      body.nav-open .mobile-nav-backdrop {
+        display: block;
+        opacity: 1;
+        pointer-events: auto
+      }
+    }
+
+    @media (max-width:720px) {
+
+      .header-inner,
+      .layout {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero,
+      section {
+        padding: 22px;
+      }
+
+      .summary-grid,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button-link {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand"><span class="brand-badge"></span>
+        <div>
+          <p class="brand-title">発表内容作成ガイドライン</p>
+          <p class="brand-subtitle">発表練習サークル（仮称）</p>
+        </div>
+      </div>
+      <div class="top-links"><a class="top-link" href="index.html">説明ページへ戻る</a><button class="mobile-nav-toggle"
+          type="button" aria-expanded="false" aria-controls="site-sidebar"><span
+            class="hamburger"><span></span><span></span><span></span></span><span
+            class="mobile-nav-toggle-label">目次</span></button></div>
+    </div>
+  </header>
+  <div class="mobile-nav-backdrop" hidden></div>
+  <main class="layout">
+    <aside class="sidebar" id="site-sidebar">
+      <nav class="panel nav-panel" aria-label="目次">
+        <p class="nav-title">Contents</p>
+        <ol class="toc">
+          <li><a href="#overview">概要</a></li>
+          <li><a href="#common">共通ガイドライン</a></li>
+          <li><a href="#fifteen">15分発表</a></li>
+          <li><a href="#thirty">30分発表</a></li>
+          <li><a href="#fifty">50分発表</a></li>
+          <li><a href="#checklist">発表前チェック</a></li>
+          <li><a class="external-link" href="index.html">説明ページへ戻る</a></li>
+        </ol>
+      </nav>
+    </aside>
+    <div class="content">
+      <section class="panel hero" aria-labelledby="hero-title">
+        <p class="eyebrow">Guideline</p>
+        <h1 id="hero-title">時間に合った深さで、<br>伝わる発表を組み立てる。</h1>
+        <p class="lead">このページは、発表内容を考えるときの目安をまとめたガイドラインです。15分・30分・50分それぞれの発表時間に合った準備のしかた、構成例、避けたいポイントを整理しています。</p>
+        <div class="hero-actions"><a class="button-link primary" href="#fifteen">15分発表を見る</a><a class="button-link"
+            href="index.html">説明ページへ戻る</a></div>
+      </section>
+      <section class="panel" id="overview">
+        <p class="section-kicker">Overview</p>
+        <h2>概要</h2>
+        <p>発表を考えるときは、情報を増やすことよりも、時間に合った整理と、聞き手に伝わる流れを作ることが大切です。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>時間</th>
+                <th>向いている発表</th>
+                <th>重視すること</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>15分</td>
+                <td>短く分かりやすい紹介</td>
+                <td>話題を絞る／おすすめ理由を明確にする</td>
+              </tr>
+              <tr>
+                <td>30分</td>
+                <td>紹介に加えて自分の考えも伝える発表</td>
+                <td>話の区切りを作る／情報と感想のバランスを取る</td>
+              </tr>
+              <tr>
+                <td>50分</td>
+                <td>しっかり構成した長めの発表</td>
+                <td>章立てする／途中で要点を整理する</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notice warn">
+          <p><strong>基本方針</strong></p>
+          <p>短い発表は絞ること、長い発表は整理することを意識してください。「全部を話す」よりも、「何を伝えたいか」を優先すると、聞き手に伝わりやすくなります。</p>
+        </div>
+      </section>
+      <section class="panel" id="common">
+        <p class="section-kicker">Common</p>
+        <h2>共通ガイドライン</h2>
+        <div class="card-grid">
+          <article class="mini-card">
+            <h3>まず決めること</h3>
+            <ul>
+              <li>何を紹介するか</li>
+              <li>いちばん伝えたいことは何か</li>
+              <li>聞き手にどうなってほしいか</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <h3>基本の構成</h3>
+            <ul>
+              <li>導入：テーマと今日の流れ</li>
+              <li>本題：概要・見どころ・感想</li>
+              <li>まとめ：一番伝えたいことと最後の一言</li>
+            </ul>
+          </article>
+        </div>
+        <h3>意識するとよいこと</h3>
+        <ul>
+          <li>情報を詰め込みすぎない</li>
+          <li>1回の発表で伝える中心をしぼる</li>
+          <li>作品を知らない人にも分かるようにする</li>
+          <li>ネタバレの有無を最初に伝える</li>
+          <li>作品紹介だけで終わらず、自分の意見や感じたことも入れる</li>
+        </ul>
+      </section>
+      <section class="panel" id="fifteen">
+        <p class="section-kicker">15 Minutes</p>
+        <h2>15分発表のガイドライン</h2>
+        <p>15分発表は、短く分かりやすく伝える練習に向いています。細かい説明よりも、「この作品のここが魅力です」とはっきり伝えることを重視してください。</p>
+        <div class="summary-grid">
+          <article class="mini-card">
+            <h3>向いている内容</h3>
+            <ul>
+              <li>好きな作品を1つ紹介する</li>
+              <li>おすすめポイントを3つ以内に絞る</li>
+              <li>作品の入口や魅力を簡潔に伝える</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <h3>意識すること</h3>
+            <ul>
+              <li>テーマは1つに絞る</li>
+              <li>あらすじは短めにする</li>
+              <li>おすすめしたい理由を中心にする</li>
+            </ul>
+          </article>
+        </div>
+        <h3>おすすめ構成</h3>
+        <ol>
+          <li>あいさつ・テーマ紹介</li>
+          <li>作品の基本情報</li>
+          <li>簡単なあらすじ</li>
+          <li>おすすめポイント1</li>
+          <li>おすすめポイント2</li>
+          <li>おすすめポイント3</li>
+          <li>まとめ</li>
+        </ol>
+        <h3>避けたいこと</h3>
+        <ul>
+          <li>設定や登場人物を細かく説明しすぎる</li>
+          <li>あらすじが長くなりすぎる</li>
+          <li>伝えたいことが多すぎて中心がぼやける</li>
+        </ul>
+      </section>
+      <section class="panel" id="thirty">
+        <p class="section-kicker">30 Minutes</p>
+        <h2>30分発表のガイドライン</h2>
+        <p>30分発表は、作品紹介に加えて、自分の考えや見どころを少し深く伝える練習に向いています。紹介と感想の両方を、無理のないバランスで入れることが大切です。</p>
+        <div class="summary-grid">
+          <article class="mini-card">
+            <h3>向いている内容</h3>
+            <ul>
+              <li>1作品をやや深く紹介する</li>
+              <li>見どころを複数の観点から説明する</li>
+              <li>作品から感じたことを整理して話す</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <h3>意識すること</h3>
+            <ul>
+              <li>発表の軸を最初に決める</li>
+              <li>情報と感想のバランスを取る</li>
+              <li>「今日話すこと」を最初に示す</li>
+            </ul>
+          </article>
+        </div>
+        <h3>おすすめ構成</h3>
+        <ol>
+          <li>あいさつ・テーマ紹介</li>
+          <li>今日の発表の流れ</li>
+          <li>作品の基本情報</li>
+          <li>内容の概要</li>
+          <li>見どころ1</li>
+          <li>見どころ2</li>
+          <li>見どころ3</li>
+          <li>自分の感想・考え</li>
+          <li>どんな人にすすめたいか</li>
+          <li>まとめ</li>
+        </ol>
+        <h3>避けたいこと</h3>
+        <ul>
+          <li>時間があるからと情報を増やしすぎる</li>
+          <li>本題に入るまでが長すぎる</li>
+          <li>似た内容を繰り返す</li>
+          <li>話の全体像が見えなくなる</li>
+        </ul>
+      </section>
+      <section class="panel" id="fifty">
+        <p class="section-kicker">50 Minutes</p>
+        <h2>50分発表のガイドライン</h2>
+        <p>50分発表は、しっかり準備して、まとまりのある発表を行う練習に向いています。長い時間だからこそ、量よりも構成の分かりやすさを大切にしてください。</p>
+        <div class="summary-grid">
+          <article class="mini-card">
+            <h3>向いている内容</h3>
+            <ul>
+              <li>1作品を深く掘り下げる</li>
+              <li>複数の視点から魅力を整理して伝える</li>
+              <li>テーマやメッセージ性まで触れる</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <h3>意識すること</h3>
+            <ul>
+              <li>最初に全体の流れを示す</li>
+              <li>章立てして区切る</li>
+              <li>各章で小さなまとめを入れる</li>
+              <li>質疑・感想共有が紙ベースでも伝わるよう、要点を明確にする</li>
+            </ul>
+          </article>
+        </div>
+        <h3>おすすめ構成</h3>
+        <ol>
+          <li>あいさつ・テーマ紹介</li>
+          <li>今日の発表の全体像</li>
+          <li>作品の基本情報</li>
+          <li>あらすじ・概要</li>
+          <li>見どころ1</li>
+          <li>見どころ2</li>
+          <li>見どころ3</li>
+          <li>人物・世界観・構成などの深掘り</li>
+          <li>自分が考えたこと・感じたこと</li>
+          <li>すすめたい理由</li>
+          <li>まとめ</li>
+        </ol>
+        <h3>避けたいこと</h3>
+        <ul>
+          <li>あらすじ説明が長すぎる</li>
+          <li>細かい情報が多すぎて聞き手が疲れる</li>
+          <li>話が横に広がりすぎる</li>
+          <li>一番言いたいことが分からなくなる</li>
+        </ul>
+      </section>
+      <section class="panel" id="checklist">
+        <p class="section-kicker">Checklist</p>
+        <h2>発表前チェック</h2>
+        <ul>
+          <li>何について話すかが最初に分かるか</li>
+          <li>いちばん伝えたいことがはっきりしているか</li>
+          <li>時間に対して内容が多すぎないか</li>
+          <li>作品を知らない人にも分かる内容になっているか</li>
+          <li>自分の感想や考えが入っているか</li>
+          <li>最後にまとめがあるか</li>
+        </ul>
+        <div class="notice warn">
+          <p><strong>迷ったときの考え方</strong></p>
+          <p>15分なら「絞る」、30分なら「区切る」、50分なら「整理して章立てする」を意識すると、準備しやすくなります。</p>
+        </div>
+      </section>
+      <footer class="footer">
+        <p>このページは、発表練習サークル（仮称）の発表内容作成ガイドラインをもとに構成しています。</p>
+      </footer>
+    </div>
+  </main>
+  <script>
+    const links = [...document.querySelectorAll('.toc a[href^="#"]')];
+    const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const toggleButton = document.querySelector('.mobile-nav-toggle'); const backdrop = document.querySelector('.mobile-nav-backdrop'); const body = document.body; const mobileMedia = window.matchMedia('(max-width: 1024px)');
+    const openNav = () => { if (!toggleButton || !backdrop) return; body.classList.add('nav-open'); backdrop.hidden = false; toggleButton.setAttribute('aria-expanded', 'true'); };
+    const closeNav = () => { if (!toggleButton || !backdrop) return; body.classList.remove('nav-open'); backdrop.hidden = true; toggleButton.setAttribute('aria-expanded', 'false'); };
+    if (toggleButton && backdrop) { toggleButton.addEventListener('click', () => body.classList.contains('nav-open') ? closeNav() : openNav()); backdrop.addEventListener('click', closeNav); document.querySelectorAll('.toc a').forEach(link => link.addEventListener('click', () => { if (mobileMedia.matches) closeNav(); })); window.addEventListener('resize', () => { if (!mobileMedia.matches) closeNav(); }); window.addEventListener('keydown', event => { if (event.key === 'Escape') closeNav(); }); }
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)); } }); }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+
+</html>
